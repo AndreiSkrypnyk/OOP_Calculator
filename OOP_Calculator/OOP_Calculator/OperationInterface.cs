@@ -4,5 +4,4 @@
     {
         double Operation(double firstValue, double secondValue);
     }
-
 }

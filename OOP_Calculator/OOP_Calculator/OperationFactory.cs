@@ -1,28 +1,36 @@
-﻿using OOP_Calculator.Operations;
+﻿using Microsoft.VisualBasic;
+using OOP_Calculator.Operations;
 
 namespace OOP_Calculator
 {
     class OperationFactory
     {
-        public double OperatorChoice(string operatorSymbol, double first, double second)
+        public static IOperation OperatorChoice(string operatorSymbol)
         {
+            IOperation operation;
+
             switch (operatorSymbol)
             {
                 case "+":
-                    return new Addition().Operation(first, second);
+                    operation = new Addition();
+                    break;
                 case "-":
-                    return new Subtraction().Operation(first, second);
+                    operation = new Subtraction();
+                    break;
                 case "*":
-                    return new Multiplication().Operation(first, second);
+                    operation = new Multiplication();
+                    break;
                 case "/":
-                    return new Division().Operation(first, second);
+                    operation = new Division();
+                    break;
                 default:
                     throw new ArgumentException("Invalid operator!");
             }
+
+            return operation;
         }
     }
 }
-
 
 /*
            //return operatorSymbol switch

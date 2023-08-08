@@ -21,7 +21,7 @@
 
                     OperationFactory operation = new();
 
-                    Console.WriteLine($"\nResult: {operation.OperatorChoice(operatorSymbol, first, second)}");
+                    Console.WriteLine($"\nResult: {OperationFactory.OperatorChoice(operatorSymbol).Operation(first, second)}");
                 }
                 catch (FormatException)
                 {
