@@ -7,27 +7,19 @@ namespace OOP_Calculator
     {
         public static IOperation OperatorChoice(string operatorSymbol)
         {
-            IOperation operation;
-
             switch (operatorSymbol)
             {
                 case "+":
-                    operation = new Addition();
-                    break;
+                    return new Addition();
                 case "-":
-                    operation = new Subtraction();
-                    break;
+                    return new Subtraction();
                 case "*":
-                    operation = new Multiplication();
-                    break;
+                    return new Multiplication();
                 case "/":
-                    operation = new Division();
-                    break;
+                    return new Division();
                 default:
                     throw new ArgumentException("Invalid operator!");
             }
-
-            return operation;
         }
     }
 }
