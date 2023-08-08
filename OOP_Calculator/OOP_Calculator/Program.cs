@@ -1,61 +1,59 @@
-﻿using OOP_Calculator.Factories;
-
-namespace OOP_Calculator
+﻿namespace OOP_Calculator
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter operator ( +, -, *, / ): ");
-            string operatorSymbol = Console.ReadLine();
+            while (true)
+            {
+                Console.Clear();
 
-            OperationFactory factory;
+                try
+                {
+                    Console.Write("Enter the first value: ");
+                    double first = double.Parse(Console.ReadLine());
 
-            if (operatorSymbol == "+")
-            {
-                factory = new AdditionFactory();
-            }
-            else if (operatorSymbol == "-")
-            {
-                factory = new SubtractionFactory();
-            }
-            else if (operatorSymbol == "*")
-            {
-                factory = new MultiplicationFactory();
-            }
-            else if (operatorSymbol == "/")
-            {
-                factory = new DivisionFactory();
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid operator!");
-                return;
-            }
+                    Console.Write("\nEnter operator ( +, -, *, / ): ");
+                    string operatorSymbol = Console.ReadLine();
 
-            IOperation operation = factory.CreateOperation();
+                    Console.Write("\nEnter the second value: ");
+                    double second = double.Parse(Console.ReadLine());
 
-            try
-            {
-                Console.Write("\nEnter the first value: ");
-                double first = double.Parse(Console.ReadLine());
+                    OperationFactory operation = new();
 
-                Console.Write("Enter the second value: ");
-                double second = double.Parse(Console.ReadLine());
-
-                Console.WriteLine($"\nResult: {operation.Operation(first, second)}");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("\nInvalid value format!");
-            }
-            catch (OverflowException)
-            {
-                Console.WriteLine("\nValue is too large or too small!");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("\nUnknown error!");
+                    Console.WriteLine($"\nResult: {operation.OperatorChoice(operatorSymbol, first, second)}");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("\nInvalid value format!");
+                    Console.WriteLine("\nPress enter to repeat: ");
+                    Console.ReadLine();
+                    continue;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("\nValue is too large or too small!");
+                    Console.WriteLine("\nPress enter to repeat: ");
+                    Console.ReadLine();
+                    continue;
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("\nInvalid operator!");
+                    Console.WriteLine("\nPress enter to repeat: ");
+                    Console.ReadLine();
+                    continue;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("\nUnknown error!");
+                    Console.WriteLine("\nPress enter to repeat: ");
+                    Console.ReadLine();
+                    continue;
+                }
+                
+                Console.WriteLine("\nPress enter to repeat: ");
+                Console.ReadLine();
             }
         }
     }
