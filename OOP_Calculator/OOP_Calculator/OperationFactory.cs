@@ -23,14 +23,3 @@ namespace OOP_Calculator
         }
     }
 }
-
-/*
-           //return operatorSymbol switch
-           //{
-           //    "+" => new Addition().Operation(first, second),
-           //    "-" => new Subtraction().Operation(first, second),
-           //    "*" => new Multiplication().Operation(first, second),
-           //    "/" => new Division().Operation(first, second),
-           //    _ => throw new ArgumentException("Invalid operator!"),
-           //};
-           */
